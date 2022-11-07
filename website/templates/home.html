@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<br />
+<br />
+<br />
+<form method ="POST">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="movieSearch"
+      name="movieSearch"
+      placeholder="Enter Movie"
+    />
+  </div>
+  <p align="center"><button type="search" class="btn btn-primary">Find Similar Movies!</button></p>
+</form>
+<br />
+<br />
+<br />
+<h1 align = "center">PingIntelligence Movie Recommendation</h1>
+{% endblock %}
