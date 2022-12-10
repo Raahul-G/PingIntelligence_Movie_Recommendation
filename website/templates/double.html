@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<br />
+<br />
+<br />
+<form method ="POST">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="movieSearch1"
+      name="movieSearch1"
+      placeholder="Enter Movie 1"
+    />
+  </div>
+    <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      id="movieSearch2"
+      name="movieSearch2"
+      placeholder="Enter Movie 2"
+    />
+  </div>
+  <p align="center"><button type="search" class="btn btn-primary" name="find">Find Similar Movies!</button></p>
+
+<br />
+<br />
+<br />
+<h1 align = "center">PingIntelligence Movie Recommendation</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<body align = "center">Are you trying to find a movie that just matches your interest?</body>
+<br />
+<br />
+<p align="left"><button type="one_movies" class="btn btn-primary" name="single">Click Here To Enter 1 Movie!</button></p>
+</form>
+
+{% endblock %}

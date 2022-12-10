@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 align = "center">Movie Recommendations Based On: {{movie1}} and {{movie2}}</h1>
+<ul class="list-group list-group-flush" id="'notes">
+    {% for recs in recommended %}
+    <li class="list-group-item">{{recs}}
+    </li>
+    {% endfor %}
+</ul>
+<br />
+<br />
+<br />
+<form method ="POST">
+<p align="center"><button type="back" class="btn btn-primary">Go Back</button></p>
+</form>
+{% endblock %}
