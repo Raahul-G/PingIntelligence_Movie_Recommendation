@@ -71,4 +71,3 @@ def movie_recommendation_double(user_title_1, user_title_2, cosine_sim=similarit
     return movie_recommendation_list
 
 if __name__ == "__main__":
-    print(movie_recommendation_double("Fargo", "Batman Begins"))
