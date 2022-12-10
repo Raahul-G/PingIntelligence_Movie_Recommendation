@@ -34,14 +34,13 @@ similarity = cosine_similarity(feature_vectors)
 
 def movie_recommendation(cosine_sim=similarity):
     # getting input from user
-    user_title_1 = input("Enter your 1st favourite movie :")
-    user_title_2 = input("Enter your 2nd favourite movie:")
+    user_title = input("Enter your 1st nd 2nd favourite movie :").split(",", 3)
 
     movie_title = movie_df['title'].tolist()
 
     # finding close match in title
-    close_matches_1 = difflib.get_close_matches(user_title_1, movie_title)
-    close_matches_2 = difflib.get_close_matches(user_title_2, movie_title)
+    close_matches_1 = difflib.get_close_matches(user_title[0], movie_title)
+    close_matches_2 = difflib.get_close_matches(user_title[1], movie_title)
 
     close_match_1 = close_matches_1[0]
     close_match_2 = close_matches_2[0]
@@ -63,9 +62,9 @@ def movie_recommendation(cosine_sim=similarity):
         idx = movies[0]
         movie_title = movie_df[movie_df.index == idx]['title'].values[0]
         if count <= 12:
-            movie_recommendation_list.append(movie_title)
+            if count > 2:
+                movie_recommendation_list.append(movie_title)
             count += 1
-
     return movie_recommendation_list
 
 
