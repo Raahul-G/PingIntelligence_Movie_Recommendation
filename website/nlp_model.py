@@ -9,8 +9,12 @@ credits_df = pd.read_csv('website/tmdb_5000_credits.csv')
 credits_df.columns = ['id', 'title', 'cast', 'crew']
 credits_df = credits_df.drop(columns=['title'])
 
+assert movie_df.shape != (0, 0), "Movie database is empty."
+assert credits_df.shape != (0, 0), "Credits database is empty."
+
 # Merging into a main dataframe
 movie_df = movie_df.merge(credits_df, on='id')
+assert movie_df.shape != (0, 0), "Error in merge."
 
 # Defining Tfidf vectorized object, to remove all english stopwords
 tfidf = TfidfVectorizer(stop_words='english')
@@ -43,6 +47,7 @@ def get_recommendations(title, cosine_similarity=cosine_sim):
 
     # Get the movie indices
     movie_indices = [i[0] for i in sim_scores]
+    assert movie_indices is not None, "Error in recommendation func"
 
     # Return the top 10 most similar movies
     return movie_df['title'].iloc[movie_indices]
