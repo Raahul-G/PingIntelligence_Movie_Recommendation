@@ -1,4 +1,3 @@
-# Importing libraries
 import pandas as pd
 import difflib
 
@@ -11,8 +10,12 @@ credits_df = pd.read_csv('website/tmdb_5000_credits.csv')
 credits_df.columns = ['id', 'title', 'cast', 'crew']
 credits_df = credits_df.drop(columns=['title'])
 
+assert movie_df.shape != (0, 0), "Movie database is empty."
+assert credits_df.shape != (0, 0), "Credits database is empty."
+
 # Merging two data files
 movie_df = movie_df.merge(credits_df, on='id')
+assert movie_df.shape != (0, 0), "Error in merge."
 
 # filtering out the specific features
 selected_features = ['genres', 'keywords', 'tagline', 'cast', 'crew']
@@ -48,6 +51,9 @@ def movie_recommendation_double(user_title_1, user_title_2, cosine_sim=similarit
     close_match_1 = close_matches_1[0]
     close_match_2 = close_matches_2[0]
 
+    assert close_match_1 is not  None, "No close match found"
+    assert close_match_2 is not None, "No close match found"
+
     # getting the index of the title entered by the user
     idx_of_the_movie_1 = movie_df[movie_df['title'] == close_match_1].index.values[0]
     idx_of_the_movie_2 = movie_df[movie_df['title'] == close_match_2].index.values[0]
@@ -68,6 +74,8 @@ def movie_recommendation_double(user_title_1, user_title_2, cosine_sim=similarit
             if count > 2:
                 movie_recommendation_list.append(movie_title)
             count += 1
+
+    assert movie_recommendation_list is not None, "Error in recommendation loop"
     return movie_recommendation_list
 
 if __name__ == "__main__":
